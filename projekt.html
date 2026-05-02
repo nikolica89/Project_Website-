@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TravelWeb</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url("https://ethnasia.com/cdn/shop/articles/sean-o-KMn4VEeEPR8-unsplash_edited.jpg?v=1621585619");
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            line-height: 1.6;
+
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-family: 'Lobster', cursive;
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            margin: 10px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #e67e22;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 10px;
+            flex: 1;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        form input, form button {
+            padding: 10px 15px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        form button {
+            background-color: #e67e22;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #d35400;
+        }
+
+
+        .offers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .offer-item {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .offer-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .offer-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .offer-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .offer-item:hover .offer-overlay {
+            opacity: 1;
+        }
+
+        .offer-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .features img {
+            border-radius: 10px;
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .features img:hover {
+            transform: scale(1.05);
+        }
+
+        /* WEATHER WIDGET */
+        #weather-gadget div {
+            border: 1px solid #e67e22;
+            border-radius: 10px;
+            padding: 15px;
+            width: 200px;
+            background-color: rgba(255, 255, 255, 0.85);
+            text-align: center;
+        }
+
+
+        footer {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            background-color: rgba(255,255,255,0.9);
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        }
+
+
+        @media (max-width: 768px) {
+            form {
+                flex-direction: column;
+            }
+
+            .offers img, .features img {
+                width: 90%;
+            }
+
+            .logo {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">TravelWeb.com</div>
+    <nav>
+        <a href="TravelWeb/flights.html">Flights</a>|
+        <a href="TravelWeb/gallery.html">Gallery</a>|
+        <a href="TravelWeb/tips.html">Tips</a>|
+        <a href="TravelWeb/blog.html">Blog</a>|
+        <a href="TravelWeb/contact.html">Contact</a>|
+    </nav>
+</header>
+
+<main>
+
+    <h1>Our Hot Deals</h1>
+    <div class="offers">
+        <a href="#" class="offer-item">
+            <img src="https://www.komando.com/wp-content/uploads/2025/07/unused_trips.jpg" alt="Beach Deal">
+            <div class="offer-badge">Hot Deal!</div>
+            <div class="offer-overlay">Sunny Beach – Only $299!</div>
+        </a>
+        <a href="#" class="offer-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuIHBNs_-thMuyGwN-g9VeLS5CGzRls69aiA&s" alt="City Deal">
+            <div class="offer-badge">Hot Deal!</div>
+            <div class="offer-overlay">Explore Paris – Only $399!</div>
+        </a>
+        <a href="#" class="offer-item">
+            <img src="https://images.prismic.io/bounce/524a9a23-712e-451b-b25a-3a7650715502_4-Cities-around-the-world.jpg?auto=compress,format" alt="Adventure Deal">
+            <div class="offer-badge">Hot Deal!</div>
+            <div class="offer-overlay">World Tour – Only $999!</div>
+        </a>
+    </div>
+
+    <h2>Current Weather in Popular Cities</h2>
+    <div id="weather-gadget" style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
+        <div>
+            <h3>New York</h3>
+            <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="Sunny" style="width:80px;height:80px;">
+            <p>25°C</p>
+            <p>Sunny</p>
+        </div>
+        <div>
+            <h3>London</h3>
+            <img src="https://openweathermap.org/img/wn/03d@2x.png" alt="Cloudy" style="width:80px;height:80px;">
+            <p>18°C</p>
+            <p>Cloudy</p>
+        </div>
+        <div>
+            <h3>Tokyo</h3>
+            <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Rainy" style="width:80px;height:80px;">
+            <p>22°C</p>
+            <p>Rainy</p>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 TravelWeb.com</p>
+</footer>
+
+<script>
+
+    const offerImages = [
+        {src: "https://www.komando.com/wp-content/uploads/2025/07/unused_trips.jpg", text: "Sunny Beach – Only $299!"},
+        {src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuIHBNs_-thMuyGwN-g9VeLS5CGzRls69aiA&s", text: "Explore Paris – Only $399!"},
+        {src: "https://images.prismic.io/bounce/524a9a23-712e-451b-b25a-3a7650715502_4-Cities-around-the-world.jpg?auto=compress,format", text: "World Tour – Only $999!"}
+    ];
+
+    const offerItems = document.querySelectorAll('.offer-item img');
+    const overlays = document.querySelectorAll('.offer-overlay');
+    let index = 0;
+
+    setInterval(() => {
+        index = (index + 1) % offerImages.length;
+        offerItems.forEach((img, i) => {
+            img.src = offerImages[(i + index) % offerImages.length].src;
+            overlays[i].innerText = offerImages[(i + index) % offerImages.length].text;
+        });
+    }, 1000);
+</script>
+
+</body>
+</html>
