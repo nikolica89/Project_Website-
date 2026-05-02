@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TravelWeb - Blog</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin:0;
+    font-family: Arial;
+    background-image: url("https://ethnasia.com/cdn/shop/articles/sean-o-KMn4VEeEPR8-unsplash_edited.jpg?v=1621585619");
+    background-size: cover;
+    text-align:center;
+	
+}
+
+
+.fancy-logo {
+  font-family: 'Lobster', cursive;
+  font-size: 64px;
+  color: black;
+  margin: 40px 0;
+}
+
+
+#blog-with-us {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.1);
+ box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  
+}
+
+#blog-form {
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+
+}
+
+input, textarea {
+  padding:10px;
+  border-radius:8px;
+  border:1px solid;
+  box-shadow: 0 0 0.5rem rgba(0,0,0,0.1);
+}
+
+button {
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  color:black;
+  font-weight: bold;
+  font-size:18px;
+  cursor:pointer;
+  
+}
+
+
+#fireworks {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display:none;
+  pointer-events:none;
+}
+
+</style>
+</head>
+
+<body>
+    <header>
+        <h1 class="fancy-logo">TravelWeb.com</h1>
+        <nav>
+            <a href="flights.html">Flights</a> |
+            <a href="gallery.html">Gallery</a> |
+            <a href="tips.html">Tips</a> |
+            <a href="index.html">Blog</a> |
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+<body>
+
+<section id="blog-with-us">
+  <h2>Write a Blog with Us</h2>
+
+  <form id="blog-form">
+    <input type="text" placeholder="Name" required>
+    <input type="email" placeholder="Email" required>
+    <input type="text" placeholder="Title" required>
+    <textarea placeholder="Content" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="success-message" style="display:none; color:green;">
+    Submitted successfully!
+  </p>
+</section>
+
+<canvas id="fireworks"></canvas>
+
+<script>
+const form = document.getElementById("blog-form");
+const msg = document.getElementById("success-message");
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+
+function createFirework(x, y) {
+  for (let i = 0; i < 50; i++) {
+    particles.push({
+      x: x,
+      y: y,
+      dx: (Math.random() - 0.5) * 6,
+      dy: (Math.random() - 0.5) * 6,
+      life: 100
+    });
+  }
+}
+
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach((p, i) => {
+    p.x += p.dx;
+    p.y += p.dy;
+    p.life--;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+    ctx.fillStyle = "hsl(" + Math.random()*360 + ",100%,50%)";
+    ctx.fill();
+
+    if (p.life <= 0) particles.splice(i,1);
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  msg.style.display = "block";
+  canvas.style.display = "block";
+
+
+  for (let i = 0; i < 5; i++) {
+    setTimeout(() => {
+      createFirework(
+        Math.random()*canvas.width,
+        Math.random()*canvas.height/2
+      );
+    }, i * 300);
+  }
+
+  form.reset();
+});
+</script>
+
+<footer>
+        <p>&copy; 2026 TravelWeb.com</p>
+    </footer>
+</body>
+</html>

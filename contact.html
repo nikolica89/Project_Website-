@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TravelWeb - Contact</title>
+	 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+<style>
+        h1,h2,h3,h4,h5,h6{
+            text-align:center;
+            font-size: 2rem;
+            text-align: center;
+            color: black;
+        }
+        * {
+            margin:0;
+            padding:0;
+            text-align: center;
+            margin-bottom: 1rem;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+
+            p{
+                text-align: center;
+            }
+            body{
+                background-image: url("https://ethnasia.com/cdn/shop/articles/sean-o-KMn4VEeEPR8-unsplash_edited.jpg?v=1621585619");
+                background-size: cover;
+            }
+		#contact { max-width: 600px; margin: 50px auto; font-family: Arial, sans-serif; }
+        #contact p { margin: 5px 0; }
+        #contact a { text-decoration: none; }
+        #contact a:hover { text-decoration: underline; }
+  footer {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+   
+}
+body *:hover {
+    color: purple;          
+    text-shadow: 0 0 8px white; 
+    transition: 0.3s;       
+}
+
+.blog-post:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+  .fancy-logo {
+            font-family: 'Lobster', cursive; 
+            font-size: 64px;                 
+            color: black;              
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.2); 
+            letter-spacing: 1px;              
+            margin: 40px 0;                 
+            text-align: center;           
+        }
+		
+
+    </style>
+    <meta charset="UTF-8">
+    <title>TRAVEL WEB</title>
+
+<body>
+    <header>
+        <h1 class="fancy-logo">TravelWeb.com</h1>
+        <nav>
+            <a href="flights.html">Flights</a> |
+            <a href="gallery.html">Gallery</a> |
+            <a href="tips.html">Tips</a> |
+			  <a href="index.html">Blog</a> |
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+		
+		<div id="contact">Loading contact...</div>
+
+<script>
+fetch('contact.json')
+  .then(response => response.json())
+  .then(data => {
+    const contact = data[0];
+    const container = document.getElementById('contact');
+    container.innerHTML = `
+      <h2>Contact ${contact.name}</h2>
+      <p>Email: <a href="mailto:${contact.email}">${contact.email}</a></p>
+      <p>Phone: <a href="tel:${contact.phone}">${contact.phone}</a></p>
+      <p>Address: ${contact.address}</p>
+      <p>${contact.message}</p>
+      <p>
+        <a href="${contact.social.facebook}" target="_blank">Facebook</a> |
+        <a href="${contact.social.instagram}" target="_blank">Instagram</a> |
+        <a href="${contact.social.twitter}" target="_blank">Twitter</a>
+      </p>
+    `;
+  })
+  .catch(err => console.error("Chyba pri načítaní JSON:", err));
+</script>
+       
+</div>
+
+<iframe 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2634.5000000000005!2d17.044500000000002!3d48.28000000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476b01234567890a%3A0xabcdef0123456789!2sNov%C3%A1%20295%2F123%2C%20900%2031%20Stupava%2C%20Slovakia!5e0!3m2!1ssk!2ssk!4v1700000000000" 
+  width="700" 
+  height="450" 
+  style="border:0;" 
+  allowfullscreen="" 
+  loading="lazy">
+</iframe>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TravelWeb.com</p>
+    </footer>
+	
+	
+</body>
+
+</html>

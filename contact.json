@@ -1,0 +1,14 @@
+[
+  {
+    "name": "TravelWeb Support",
+    "email": "support@travelweb.com",
+    "phone": "+421 900 123 456",
+    "address": "Nová 295/123, 900 31 Stupava, Slovakia",
+    "social": {
+      "facebook": "https://www.facebook.com/travelweb",
+      "instagram": "https://www.instagram.com/travelweb",
+      "twitter": "https://www.twitter.com/travelweb"
+    },
+    "message": "Feel free to contact us anytime. We are happy to help with your travel plans!"
+  }
+]

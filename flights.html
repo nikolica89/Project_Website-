@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TravelWeb - Flights</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <style>
+       
+      h1,h2,h3,h4,h5,h6{
+		font-size: 2rem;
+        }
+        * {
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        p{
+            text-align: center;
+        }
+
+        body{
+            background-image: url("https://ethnasia.com/cdn/shop/articles/sean-o-KMn4VEeEPR8-unsplash_edited.jpg?v=1621585619");
+            background-size: cover;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 37.5rem;
+            margin: 0 auto;
+            border: 0.125rem solid;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 0 0.5rem rgba(0,0,0,0.1);
+        }
+
+        footer {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+
+
+     
+        #flights {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #flights h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 25px;
+
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 150px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 5px;
+ 
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid black;
+            font-size: 16px;
+		
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+			color: blue;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+			color: black;
+        }
+
+        .fancy-logo {
+            font-family: 'Lobster', cursive; 
+            font-size: 64px;                             
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.2); 
+            letter-spacing: 1px;              
+            margin: 40px 0;                 
+            text-align: center;           
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+            }
+
+            .fancy-logo {
+                font-size: 48px;
+            }
+			
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="fancy-logo">TravelWeb.com</h1>
+        <nav>
+            <a href="flights.html">Flights</a> |
+            <a href="gallery.html">Gallery</a> |
+            <a href="tips.html">Tips</a> |
+            <a href="index.html">Blog</a> |
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section id="flights">
+        <h2>Search Flights</h2>
+        <form id="flight-search">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="from">From</label>
+                    <input type="text" id="from" name="from" placeholder="Departure city" required>
+                </div>
+                <div class="form-group">
+                    <label for="to">To</label>
+                    <input type="text" id="to" name="to" placeholder="Destination city" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="departure">Departure Date</label>
+                    <input type="date" id="departure" name="departure" required>
+                </div>
+                <div class="form-group">
+                    <label for="return">Return Date</label>
+                    <input type="date" id="return" name="return">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group small-field">
+                    <label for="passengers">Passengers</label>
+                    <input type="number" id="passengers" name="passengers" value="1" min="1">
+                </div>
+                <div class="form-group small-field">
+                    <label for="class">Class</label>
+                    <select id="class" name="class">
+                        <option value="economy">Economy</option>
+                        <option value="business">Business</option>
+                        <option value="first">First</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit">Search Flights</button>
+        </form>
+    </section>
+	
+<section id="stats">
+  <div class="stat">
+    <h3><span class="counter" data-target="20000" data-step="5">0</span>+</h3>
+    <p>Flights Booked</p>
+  </div>
+
+  <div class="stat">
+    <h3><span class="counter" data-target="1500" data-step="2">0</span>+</h3>
+    <p>Happy Travelers</p>
+  </div>
+
+  <div class="stat">
+    <h3><span class="counter" data-target="500" data-step="1">0</span>+</h3>
+    <p>Destinations</p>
+  </div>
+</section>
+
+<script>
+const counters = document.querySelectorAll('.counter');
+
+counters.forEach((counter, index) => {
+    let start = 0;
+    const end = parseInt(counter.getAttribute('data-target'));
+    
+    const duration = 15000;
+    const stepTime = Math.ceil(duration / end); 
+
+    setTimeout(() => {
+        const timer = setInterval(() => {
+            start += 1;
+            counter.textContent = start.toLocaleString();
+            if (start >= end) clearInterval(timer);
+        }, stepTime);
+    }, index * 500); 
+});
+</script>
+
+
+    <footer>
+        <p>&copy; 2026 TravelWeb.com</p>
+    </footer>
+</body>
+</html>
